@@ -4,64 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Uygulama</title>
 </head>
 <style>
-.app{
-    text-align: center;
 
-    }
-.app input{
-    
-    border-radius: 50px;
-    padding: 5px ;
-    
-}
-.app button{
-    border: none;
-    border-radius: 50px;
-    padding: 7px 65px;
-    cursor: pointer;
-
-}
-
-.list-container{
-    justify-content: center;
-    text-align: center;
-    }
-#lists{
-    justify-content: center;
-    list-style-type: none;
-    margin-top: 20px;
-        
-    }
-.buttons .sil-btn{
-    padding: 5px 65px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
-    }
-.buttons .güncelle-btn{
-    padding: 5px 65px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
-}
 </style>
 <body>
-    <h1 style="text-align: center;">BOOK APP</h1>
+    <h1 style="text-align: center;">BOOK MANAGEMENT APP</h1>
     <div class="app" id="app">
-        <input type="text" placeholder="Kitap gir" id="kitap-input">
-        <input type="text" placeholder="Yazar gir" id="yazar-input">
-        <input type="text" placeholder="Fiyat gir" id="fiyat-input">
-        <button id="btn" onclick="addBook()">Ekle</button>
-    </div>
-    <div id="list-container" class="list-container">
-        <ul class="list" id="list">
-            
-        </ul>
-    </div>
+       
+        <input type="text" placeholder="Book Name" id="kitap-input"> 
+        <input type="text" placeholder="Book Auther" id="yazar-input"> 
+        <input type="text" placeholder="Book Price" id="fiyat-input"> <br>
+        <button id="btn" onclick="addBook(event)"> Add Book </button> 
+        <button id="form-btn" onclick="openUpdateForm(event)">Open Update Form</button>
+        
+        <div id="update">
+            <span class="update-header">Book Updater Form</span> <br>
+            <input type="text"  class="newbook" placeholder="Book Name" > 
+            <input type="text"  class="newauther" placeholder="Book Auther" >
+            <input type="text"  class="newprice" placeholder="Book Price" >
+        </div>
 
-<script src="app.js"></script>
+        <div id="list-container" class="list-container">
+            <ul class="list" id="list"></ul>
+        </div>
+    </div>  
+
+
+
+<script  src="app.js"></script>
+
+
 </body>
 </html>
