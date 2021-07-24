@@ -4,7 +4,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     text-align: center;
 }
 
-#btn{
+#add-btn{
     margin-top:20px;
 }
 #form-btn{
@@ -57,7 +57,7 @@ button{
 
 }
 
-.update-header{
+.update-title{
     justify-content: center;
     margin-top: 35px;
 }
