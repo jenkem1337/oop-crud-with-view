@@ -157,7 +157,7 @@ const UpdateBook = (event,index) => {
     const newBookAuther = document.querySelector(".newauther")
     const newBookPrice = document.querySelector(".newprice")
 
-    if(newBookName.value !="" || newBookAuther.value !="" || newBookPrice.value !=""){
+    if(newBookName.value !="" && newBookAuther.value !="" && newBookPrice.value !=""){
         book.updateBookData(newBookName.value, newBookAuther.value, newBookPrice.value ,index)
         Render()
         newBookName.value = ""
