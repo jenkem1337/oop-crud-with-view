@@ -1,13 +1,17 @@
 # oop-crud-with-view
 
-### Default
-<img width="1080" alt="first" src="https://user-images.githubusercontent.com/78204287/126313052-1cf07264-02b1-41ab-80ec-a22ba70cdee2.png">
+### Desktop Version
+<img width="1080" alt="FOTO6(desktop)" src="https://user-images.githubusercontent.com/78204287/133830195-91a7b912-a493-4aa5-b0ba-47524c008702.png">
 
-### With Toggle
-<img width="1080" alt="with toggle" src="https://user-images.githubusercontent.com/78204287/126313112-30dbe800-e18e-4cb7-9e30-bbaacbed398a.png">
+### With Item Added
+<img width="1025" alt="foto1" src="https://user-images.githubusercontent.com/78204287/133830226-6197e6fc-92a1-4118-9870-79fa76051978.png">
 
-### With Update
-<img width="1080" alt="with update" src="https://user-images.githubusercontent.com/78204287/126313250-f49e3243-7cd7-4281-8017-9e6e1d955c8a.png">
+### With Toggled
+<img width="1030" alt="foto2" src="https://user-images.githubusercontent.com/78204287/133830260-fb903087-2173-44ad-903f-38f584e370a7.png">
 
-### With Delete First Item
-<img width="1080" alt="with delete first item" src="https://user-images.githubusercontent.com/78204287/126313268-f457bcb4-9c79-4a2c-98bb-e9ac1ae6dad5.png">
+### With Updated
+<img width="1027" alt="foto3(günceleneck olan)" src="https://user-images.githubusercontent.com/78204287/133830265-da78e05f-8449-4716-845c-050171a73390.png">
+<img width="1022" alt="foto4(güncelendi)" src="https://user-images.githubusercontent.com/78204287/133830273-d60e4ca6-232f-40d1-8734-d3ac2ea22f16.png">
+
+### With Deleted
+<img width="1033" alt="foto5(sil)" src="https://user-images.githubusercontent.com/78204287/133830280-2a403552-a7c9-4223-9fc7-6e62eb54b48d.png">
