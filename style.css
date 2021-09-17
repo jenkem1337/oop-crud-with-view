@@ -1,43 +1,133 @@
-body {font-family: Arial, Helvetica, sans-serif;}
 
-.app{
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    font-family: Arial, Helvetica, sans-serif; 
+    background-color: rgb(173, 173, 173); 
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  
+.msg-container{
+    padding: 20px;
+    color: white;
+    width: 100%;
     text-align: center;
+    margin-top: 50px;
+    display: none;
+  }
+
+.book-forms-container{
+    float: left;
+    text-align: center;
+    margin-top: 150px;
+    margin-left: 100px;
 }
 
-#add-btn{
+.add-btn{
     margin-top:20px;
-}
-#form-btn{
+    background-color: lightgreen;
     border: none;
-    border-radius: 50px;
-    padding: 7px 65px;
     cursor: pointer;
-    margin-top:20px;
+    border-radius: 50px;
+    padding:7px 40px;
+    transition: ease 1s;
 }
-#update{
+
+.update-form-btn{
+    background-color: lightskyblue;
+    margin-top:20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 7px 40px;
+    transition: ease 1s;
+}
+
+.update-form{
     text-align: center;
     display: none;
     margin-top: 20px;
 }
+
 input{
-    
     border-radius: 50px;
-    padding: 5px ;
+    padding: 5px 40px ;
     margin-top: 20px
-}
-
-button{
-    border: none;
-    border-radius: 50px;
-    padding: 7px 65px;
-    cursor: pointer;
-
 }
 
 .list-container{
     justify-content: center;
+    width: 500px;
+    height: 550px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 80px;
+    float:right;
+    margin-right: 200px;
+    overflow: auto;
+      
 }
 
 
@@ -45,16 +135,14 @@ button{
     justify-content: center;
     list-style-type: none;
     margin-top: 30px;
-    
 }
 
-.buttons {
-    padding: 5px 65px;
+.book-buttons {
+    justify-content: center;
     border: none;
     cursor: pointer;
-    justify-content: center;
     border-radius: 50px;
-
+    padding: 7px 40px;
 }
 
 .update-title{
@@ -63,5 +151,63 @@ button{
 }
 
 .update-btn{
-    margin-top: 20px
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 7px 40px;
+}
+
+.update-btn{
+    background-color: lightskyblue;
+    transition: ease 1s;
+}
+
+.delete-btn{
+    background-color: lightcoral;
+    transition: ease 1s;
+}
+
+.toggle-btn{
+    background-color: lightsalmon;
+    transition: ease 1s;
+}
+
+
+.add-btn:hover{
+    background-color: rgba(27, 172, 27, 0.76);
+}
+.update-form-btn:hover{
+    background-color: rgb(0, 122, 197);
+}
+.update-btn:hover{
+    background-color: rgb(0, 122, 197);
+}
+.toggle-btn:hover{
+    background-color: rgb(255, 99, 37);
+}
+.delete-btn:hover{
+    background-color: rgb(255, 0, 0);
+}
+
+@media only screen and (max-width: 1156px) {
+    .book-forms-container{
+        width: 100%;
+        float: none;
+        margin-top: 20px;
+        margin-left:0px;
+    }
+    .list-container{
+        width: 100%;
+        float:none;
+        margin-right: 0px;
+    }
+    
+    .book-buttons {
+        padding: 7px 20px;
+    }
+
+    .form-btns{
+        padding: 7px 20px;
+    }
 }

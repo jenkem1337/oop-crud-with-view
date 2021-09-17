@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+
     <title>Uygulama</title>
 </head>
 <style>
@@ -12,30 +13,33 @@
 </style>
 <body>
     <h1 style="text-align: center;">BOOK MANAGEMENT APP</h1>
-    <div class="app" id="app">
-       
-        <input type="text" placeholder="Book Name" id="kitap-input"> 
-        <input type="text" placeholder="Book Auther" id="yazar-input"> 
-        <input type="text" placeholder="Book Price" id="fiyat-input"> <br>
-        <button id="add-btn" onclick="addBook(event)"> Add Book </button> 
-        <button id="form-btn" onclick="openUpdateForm(event)">Open Update Form</button>
-        
-        <div id="update">
-            <span class="update-title">Book Updater Form</span> <br>
-            <input type="text"  class="newbook" placeholder="Book Name" > 
-            <input type="text"  class="newauther" placeholder="Book Auther" >
-            <input type="text"  class="newprice" placeholder="Book Price" >
+        <div class="msg-container" id="msg-container">
         </div>
+        <div class="book-forms-container">
+            <input type="text" placeholder="Book Name" id="kitap-input"> <br>
+            <input type="text" placeholder="Book Auther" id="yazar-input"> <br>
+            <input type="text" placeholder="Book Price" id="fiyat-input"> <br>
+            <div class="">
+                <button class="form-btns add-btn" onclick="addBook(event)"> Add Book </button> 
+                <button class="form-btns update-form-btn" id="form-btn" onclick="openUpdateForm(event)">Open Update Form</button>
+            </div>
+            <div class="update-form" id="update">
+                <span class="update-title">Book Updater Form</span> <br>
+                <input type="text"  class="newbook" placeholder="Book Name" > <br>
+                <input type="text"  class="newauther" placeholder="Book Auther" > <br>
+                <input type="text"  class="newprice" placeholder="Book Price" >
+            </div>
+        </div> 
 
-        <div id="list-container" class="list-container">
+
+        <div id="list-container" class="list-container" >
             <ul class="list" id="list"></ul>
         </div>
-    </div>  
+     
 
 
 
 <script  src="app.js"></script>
-
 
 </body>
 </html>

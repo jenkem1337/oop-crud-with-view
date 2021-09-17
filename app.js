@@ -45,12 +45,12 @@ class BookData{
         this.book.setComplete(false)
         
         
-       this.datas.push({
+        this.datas= [{
             book:     this.book.getName(),
             auther:   this.book.getAuther(),
             price:    this.book.getPrice(),
             complete: this.book.getComplete()   
-        })
+        }, ...this.datas]
         
         
     }
@@ -108,8 +108,6 @@ class BookController{
     toggleBookData(index){
         this.bookData.toggleBook(index)
     }
-
-
 }
 
 //View 
@@ -119,27 +117,45 @@ const addBook = (event) => {
     event.preventDefault()
     const isimInput = document.getElementById("kitap-input")
     const yazarInput = document.getElementById("yazar-input")
-    const fiyatInput = document.getElementById("fiyat-input")
+    const fiyatInput = document.getElementById("fiyat-input")    
+    const messageContainer = document.getElementById("msg-container")
 
     if(isimInput.value !="" && yazarInput.value !="" && fiyatInput.value!=""){
 
         book.addBook(isimInput.value, yazarInput.value ,fiyatInput.value)
+        
+        messageContainer.style.display = "block"
+        messageContainer.style.backgroundColor = "green"
+        messageContainer.innerHTML = "You have been added a book a few second ago :)"
+        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
 
         isimInput.value = ""
         yazarInput.value = ""
         fiyatInput.value = "" 
         Render()
     }else{
+        
+        messageContainer.style.display = "block"
+        messageContainer.style.backgroundColor = "red"
+        messageContainer.innerHTML = "Please fill blank input fields !"
+        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
+        
         isimInput.value = ""
         yazarInput.value = ""
-        fiyatInput.value = "" 
-        console.error(false)
+        fiyatInput.value = ""
     }
 }
 
 const Delete = (event,index) =>{
     event.preventDefault()
     book.deleteBook(index)
+    
+    const messageContainer = document.getElementById("msg-container")
+    messageContainer.style.display = "block"
+    messageContainer.style.backgroundColor = "red"
+    messageContainer.innerHTML = "You deleted a book a few second ago."
+    let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
+    
     Render()
 }
 
@@ -147,6 +163,13 @@ const Delete = (event,index) =>{
 const itsFinished = (event, index) => {
     event.preventDefault()
     book.toggleBookData(index)
+    
+    const messageContainer = document.getElementById("msg-container")
+    messageContainer.style.display = "block"
+    messageContainer.style.backgroundColor = "lightsalmon"
+    messageContainer.innerHTML = "You toggled a book a few second ago."
+    let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
+    
     Render()
 }
 
@@ -159,12 +182,21 @@ const UpdateBook = (event,index) => {
 
     if(newBookName.value !="" && newBookAuther.value !="" && newBookPrice.value !=""){
         book.updateBookData(newBookName.value, newBookAuther.value, newBookPrice.value ,index)
+        
+        const messageContainer = document.getElementById("msg-container")
+        messageContainer.style.display = "block"
+        messageContainer.style.backgroundColor = "lightskyblue"
+        messageContainer.innerHTML = "You toggled a book a few second ago."
+        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
+        
         Render()
         newBookName.value = ""
         newBookAuther.value= ""
         newBookPrice.value= ""
     }
 }
+
+
 
 const openUpdateForm = (event) => {
     event.preventDefault()
@@ -192,10 +224,10 @@ const Render = () => {
                 Is that book read ?      : ${data.complete == false ? "It is not read" : "It has been read" } <br> <br>
 
 
-                <div class="buttons">
-                    <button onclick="Delete(event,${index})">Delete</button>
-                    <button onclick="itsFinished(event, ${index})">Toggle</button>
-                    <button onclick="UpdateBook(event, ${index})">Update Book</button>
+                <div >
+                    <button class="book-buttons delete-btn" onclick="Delete(event,${index})">Delete</button>
+                    <button class="book-buttons toggle-btn" onclick="itsFinished(event, ${index})">Toggle</button>
+                    <button class="book-buttons update-btn"onclick="UpdateBook(event, ${index})">Update Book</button>
                 </div>                        
             </li>        
         `
