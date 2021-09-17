@@ -105,7 +105,7 @@ class BookController{
     }
 
     returnBookData(){
-        localStorage.getItem('books')
+        return localStorage.getItem('books')
     }
 
     toggleBookData(index){
