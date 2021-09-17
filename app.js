@@ -52,11 +52,9 @@ class BookData{
             complete: this.book.getComplete()   
         }, ...this.datas]
         
-        localStorage.setItem('book', JSON.stringify(this.datas))
     }
     deleteBook(index){
         this.datas.splice(index,1)
-        localStorage.setItem('book', JSON.stringify(this.datas))
     }
 
     updateBook(bookName, auther, price, index){
@@ -69,19 +67,16 @@ class BookData{
         this.datas[index].auther = this.book.getAuther()
         this.datas[index].price = this.book.getPrice()
         this.datas[index].complete = this.book.getComplete()
-        localStorage.setItem('book', JSON.stringify(this.datas))
     }
     
     toggleBook(index){
         if(this.datas[index].complete == false){
             this.book.setComplete(true)
             this.datas[index].complete = this.book.getComplete()
-            localStorage.setItem('book', JSON.stringify(this.datas))
         }
         else{
             this.book.setComplete(false)
             this.datas[index].complete = this.book.getComplete()
-            localStorage.setItem('book', JSON.stringify(this.datas))
         }
 
     }   
@@ -100,16 +95,17 @@ class BookController{
         this.bookData.deleteBook(index)
     }
 
+
     updateBookData(bookName, auther, price, index){
         this.bookData.updateBook(bookName, auther, price, index)
     }
 
-    returnBookData(){
-        localStorage.getItem('books')
-    }
-
     toggleBookData(index){
         this.bookData.toggleBook(index)
+    }
+
+    returnBookData(){
+        return this.bookData.datas
     }
 }
 
@@ -130,7 +126,7 @@ const addBook = (event) => {
         messageContainer.style.display = "block"
         messageContainer.style.backgroundColor = "green"
         messageContainer.innerHTML = "You have been added a book a few second ago :)"
-        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,15000)
+        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
 
         isimInput.value = ""
         yazarInput.value = ""
@@ -141,7 +137,7 @@ const addBook = (event) => {
         messageContainer.style.display = "block"
         messageContainer.style.backgroundColor = "red"
         messageContainer.innerHTML = "Please fill blank input fields !"
-        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,15000)
+        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
         
         isimInput.value = ""
         yazarInput.value = ""
@@ -157,7 +153,7 @@ const Delete = (event,index) =>{
     messageContainer.style.display = "block"
     messageContainer.style.backgroundColor = "red"
     messageContainer.innerHTML = "You deleted a book a few second ago."
-    let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,15000)
+    let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
     
     Render()
 }
@@ -171,7 +167,7 @@ const itsFinished = (event, index) => {
     messageContainer.style.display = "block"
     messageContainer.style.backgroundColor = "lightsalmon"
     messageContainer.innerHTML = "You toggled a book a few second ago."
-    let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,15000)
+    let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
     
     Render()
 }
@@ -190,7 +186,7 @@ const UpdateBook = (event,index) => {
         messageContainer.style.display = "block"
         messageContainer.style.backgroundColor = "lightskyblue"
         messageContainer.innerHTML = "You toggled a book a few second ago."
-        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,15000)
+        let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
         
         Render()
         newBookName.value = ""
@@ -218,7 +214,7 @@ const openUpdateForm = (event) => {
 const Render = () => {
     let template = ""
     const ulTag = document.getElementById("list")
-    book.returnBookData().map( (data, index) => {
+    book.returnBookData().forEach((data, index) => {
         template += `
             <li id="lists">
                 Book Name                : ${data.book} <br>
