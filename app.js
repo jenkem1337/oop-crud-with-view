@@ -50,7 +50,7 @@ class BookData{
             auther:   this.book.getAuther(),
             price:    this.book.getPrice(),
             complete: this.book.getComplete()   
-        }, ..this.datas]
+        }, ...this.datas]
         
         
     }
