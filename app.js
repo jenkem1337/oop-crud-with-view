@@ -45,16 +45,19 @@ class BookData{
         this.book.setComplete(false)
         
         
-        this.datas= [{
+        this.datas = [{
             book:     this.book.getName(),
             auther:   this.book.getAuther(),
             price:    this.book.getPrice(),
             complete: this.book.getComplete()   
         }, ...this.datas]
         
+        localStorage.setItem('book', JSON.stringify(this.datas))
     }
+    
     deleteBook(index){
         this.datas.splice(index,1)
+        localStorage.setItem('book', JSON.stringify(this.datas))
     }
 
     updateBook(bookName, auther, price, index){
@@ -67,22 +70,26 @@ class BookData{
         this.datas[index].auther = this.book.getAuther()
         this.datas[index].price = this.book.getPrice()
         this.datas[index].complete = this.book.getComplete()
+
+        localStorage.setItem('book', JSON.stringify(this.datas))
     }
     
     toggleBook(index){
         if(this.datas[index].complete == false){
             this.book.setComplete(true)
             this.datas[index].complete = this.book.getComplete()
+            localStorage.setItem('book', JSON.stringify(this.datas))
         }
         else{
             this.book.setComplete(false)
             this.datas[index].complete = this.book.getComplete()
+            localStorage.setItem('book', JSON.stringify(this.datas))
         }
 
-    }   
+    }
 
 }
-class BookController{
+class BookService{
     constructor(bookData){
         this.bookData = bookData
     }
@@ -105,12 +112,14 @@ class BookController{
     }
 
     returnBookData(){
+        this.bookData.datas = JSON.parse(localStorage.getItem('book'))
         return this.bookData.datas
     }
 }
 
 //View 
-const book = new BookController(new BookData(new Book))
+const book = new BookService(new BookData(new Book))
+
 
 const addBook = (event) => {
     event.preventDefault()
@@ -189,6 +198,7 @@ const UpdateBook = (event,index) => {
         let messageTimeout = setTimeout(() => messageContainer.style.display = "none" ,5000)
         
         Render()
+
         newBookName.value = ""
         newBookAuther.value= ""
         newBookPrice.value= ""
@@ -210,6 +220,7 @@ const openUpdateForm = (event) => {
     }
     Render()   
 }
+
 
 const Render = () => {
     let template = ""
@@ -233,3 +244,4 @@ const Render = () => {
     })
     ulTag.innerHTML = template
 }
+Render()
