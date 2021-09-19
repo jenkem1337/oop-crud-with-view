@@ -55,12 +55,12 @@ class BookData{
         localStorage.setItem('book', JSON.stringify(this.datas))
     }
     
-    deleteBook(index){
+    deleteBookData(index){
         this.datas.splice(index,1)
         localStorage.setItem('book', JSON.stringify(this.datas))
     }
 
-    updateBook(bookName, auther, price, index){
+    updateBookData(bookName, auther, price, index){
         this.book.setName(bookName)
         this.book.setAuther(auther)
         this.book.setPrice(price)
@@ -74,7 +74,7 @@ class BookData{
         localStorage.setItem('book', JSON.stringify(this.datas))
     }
     
-    toggleBook(index){
+    toggleBookData(index){
         if(this.datas[index].complete == false){
             this.book.setComplete(true)
             this.datas[index].complete = this.book.getComplete()
@@ -88,6 +88,12 @@ class BookData{
 
     }
 
+    returnBookData(){
+        this.datas = JSON.parse(localStorage.getItem('book'))
+        return this.datas
+
+    }
+
 }
 class BookService{
     constructor(bookData){
@@ -98,22 +104,20 @@ class BookService{
         this.bookData.addBook(bookName, auther, price)
     }
 
-    deleteBook(index){
-        this.bookData.deleteBook(index)
+    deleteBookData(index){
+        this.bookData.deleteBookData(index)
     }
 
-
     updateBookData(bookName, auther, price, index){
-        this.bookData.updateBook(bookName, auther, price, index)
+        this.bookData.updateBookData(bookName, auther, price, index)
     }
 
     toggleBookData(index){
-        this.bookData.toggleBook(index)
+        this.bookData.toggleBookData(index)
     }
 
     returnBookData(){
-        this.bookData.datas = JSON.parse(localStorage.getItem('book'))
-        return this.bookData.datas
+        return this.bookData.returnBookData()
     }
 }
 
@@ -156,7 +160,7 @@ const addBook = (event) => {
 
 const Delete = (event,index) =>{
     event.preventDefault()
-    book.deleteBook(index)
+    book.deleteBookData(index)
     
     const messageContainer = document.getElementById("msg-container")
     messageContainer.style.display = "block"
