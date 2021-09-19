@@ -46,7 +46,7 @@ class BookData{
         
         
         this.datas = [{
-            book:     this.book.getName(),
+            name:     this.book.getName(),
             auther:   this.book.getAuther(),
             price:    this.book.getPrice(),
             complete: this.book.getComplete()   
@@ -66,7 +66,7 @@ class BookData{
         this.book.setPrice(price)
         this.book.setComplete(false)
 
-        this.datas[index].book = this.book.getName()
+        this.datas[index].name = this.book.getName()
         this.datas[index].auther = this.book.getAuther()
         this.datas[index].price = this.book.getPrice()
         this.datas[index].complete = this.book.getComplete()
@@ -228,7 +228,7 @@ const Render = () => {
     book.returnBookData().forEach((data, index) => {
         template += `
             <li id="lists">
-                Book Name                : ${data.book} <br>
+                Book Name                : ${data.name} <br>
                 Book Auther              : ${data.auther}<br>
                 Book Price               : ${data.price} TL<br>
                 Is that book read ?      : ${data.complete == false ? "It is not read" : "It has been read" } <br> <br>
