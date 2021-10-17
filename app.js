@@ -235,7 +235,7 @@ const Render = () => {
                 Book Name                : ${data.name} <br>
                 Book Auther              : ${data.auther}<br>
                 Book Price               : ${data.price} TL<br>
-                Is that book read ?      : ${data.complete == false ? "It is not read" : "It has been read" } <br> <br>
+                Is this book read ?      : ${data.complete == false ? "It did not read" : "It has been read" } <br> <br>
 
 
                 <div >
