@@ -34,7 +34,7 @@ class Book{
 
 class BookData{
     constructor(book){
-        this.datas = []
+        this.data = []
         this.book = book
         
     }
@@ -45,19 +45,19 @@ class BookData{
         this.book.setComplete(false)
         
         
-        this.datas = [{
+        this.data = [{
             name:     this.book.getName(),
             auther:   this.book.getAuther(),
             price:    this.book.getPrice(),
             complete: this.book.getComplete()   
-        }, ...this.datas]
+        }, ...this.data]
         
-        localStorage.setItem('book', JSON.stringify(this.datas))
+        localStorage.setItem('book', JSON.stringify(this.data))
     }
     
     deleteBookData(index){
-        this.datas.splice(index,1)
-        localStorage.setItem('book', JSON.stringify(this.datas))
+        this.data.splice(index,1)
+        localStorage.setItem('book', JSON.stringify(this.data))
     }
 
     updateBookData(bookName, auther, price, index){
@@ -66,31 +66,31 @@ class BookData{
         this.book.setPrice(price)
         this.book.setComplete(false)
 
-        this.datas[index].name = this.book.getName()
-        this.datas[index].auther = this.book.getAuther()
-        this.datas[index].price = this.book.getPrice()
-        this.datas[index].complete = this.book.getComplete()
+        this.data[index].name = this.book.getName()
+        this.data[index].auther = this.book.getAuther()
+        this.data[index].price = this.book.getPrice()
+        this.data[index].complete = this.book.getComplete()
 
-        localStorage.setItem('book', JSON.stringify(this.datas))
+        localStorage.setItem('book', JSON.stringify(this.data))
     }
     
     toggleBookData(index){
-        if(this.datas[index].complete == false){
+        if(this.data[index].complete == false){
             this.book.setComplete(true)
-            this.datas[index].complete = this.book.getComplete()
-            localStorage.setItem('book', JSON.stringify(this.datas))
+            this.data[index].complete = this.book.getComplete()
+            localStorage.setItem('book', JSON.stringify(this.data))
         }
         else{
             this.book.setComplete(false)
-            this.datas[index].complete = this.book.getComplete()
-            localStorage.setItem('book', JSON.stringify(this.datas))
+            this.data[index].complete = this.book.getComplete()
+            localStorage.setItem('book', JSON.stringify(this.data))
         }
 
     }
 
     returnBookData(){
-        this.datas = JSON.parse(localStorage.getItem('book'))
-        return this.datas
+        this.data = JSON.parse(localStorage.getItem('book'))
+        return this.data
 
     }
 
@@ -122,8 +122,8 @@ class BookService{
 }
 
 //View 
-const book = new BookService(new BookData(new Book))
-
+let book = new BookService(new BookData(new Book()))
+const AddBtn = document.querySelector('.add-btn')
 
 const addBook = (event) => {
     event.preventDefault()
