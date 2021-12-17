@@ -35,10 +35,7 @@ class Book{
 class BookData{
     constructor(book){
         this.data = []
-        localStorage.setItem('book', JSON.stringify(this.data))
-        this.data= JSON.parse(localStorage.getItem('book'))
         this.book = book
-        
     }
     addBook(bookName, auther, price){
         this.book.setName(bookName)
@@ -88,6 +85,11 @@ class BookData{
     }
 
     findAll(){
+        if(localStorage.getItem('book') === null){
+            this.data = []
+        }else{
+            this.data = JSON.parse(localStorage.getItem('book'))
+        }
         return this.data
     }
 
