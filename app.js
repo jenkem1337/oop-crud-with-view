@@ -35,6 +35,8 @@ class Book{
 class BookData{
     constructor(book){
         this.data = []
+        localStorage.setItem('book', JSON.stringify(this.data))
+        this.data= JSON.parse(localStorage.getItem('book'))
         this.book = book
         
     }
@@ -43,15 +45,13 @@ class BookData{
         this.book.setAuther(auther)
         this.book.setPrice(price)
         this.book.setComplete(false)
-        
-        
-        this.data = [{
+                
+        this.data.push({
             name:     this.book.getName(),
             auther:   this.book.getAuther(),
             price:    this.book.getPrice(),
             complete: this.book.getComplete()   
-        }, ...this.data]
-        
+        })
         localStorage.setItem('book', JSON.stringify(this.data))
     }
     
@@ -70,7 +70,6 @@ class BookData{
         this.data[index].auther = this.book.getAuther()
         this.data[index].price = this.book.getPrice()
         this.data[index].complete = this.book.getComplete()
-
         localStorage.setItem('book', JSON.stringify(this.data))
     }
     
@@ -84,14 +83,12 @@ class BookData{
             this.book.setComplete(false)
             this.data[index].complete = this.book.getComplete()
             localStorage.setItem('book', JSON.stringify(this.data))
-        }
 
+        }
     }
 
-    returnBookData(){
-        this.data = JSON.parse(localStorage.getItem('book'))
+    findAll(){
         return this.data
-
     }
 
 }
@@ -116,8 +113,8 @@ class BookService{
         this.bookData.toggleBookData(index)
     }
 
-    returnBookData(){
-        return this.bookData.returnBookData()
+    findAll(){
+        return this.bookData.findAll()
     }
 }
 
@@ -229,7 +226,8 @@ const openUpdateForm = (event) => {
 const Render = () => {
     let template = ""
     const ulTag = document.getElementById("list")
-    book.returnBookData().forEach((data, index) => {
+    let books = book.findAll()
+    books.forEach((data, index) => {
         template += `
             <li id="lists">
                 Book Name                : ${data.name} <br>
